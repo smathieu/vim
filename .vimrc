@@ -81,3 +81,16 @@ function! Find(name)
 endfunction
 command! -nargs=1 Find :call Find("<args>")
 
+
+let os = substitute(system('uname'), "\n", "", "")
+
+" Linux only
+if os == "Linux"
+    " Remap normal copy paste 
+    nmap <C-V> "+gP
+    imap <C-V> <ESC><C-V>i
+    vmap <C-C> "+y
+endif
+
+
+
