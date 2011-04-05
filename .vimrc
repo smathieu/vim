@@ -12,6 +12,9 @@ set nocp
 set nobk
 set ruler
 
+" Longuer history
+set hi=150
+
 "####################################################################
 "#
 "# FileType Support
