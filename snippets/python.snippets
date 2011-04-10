@@ -1,5 +1,5 @@
 snippet #!
-	#!/usr/bin/python
+	#!/usr/bin/env python
 
 snippet imp
 	import ${1:module}
@@ -84,3 +84,17 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+snippet ut
+	import unittest
+	from graph import Graph, Node
+
+	class Test${1}(unittest.TestCase):
+		def setUp(self):
+			pass
+
+		def test_${2}(self):
+			pass
+
+	if __name__ == '__main__':
+		unittest.main()
+

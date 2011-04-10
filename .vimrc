@@ -11,10 +11,10 @@ set ai
 set nocp
 set nobk
 set ruler
+set tw=80
 
-" Longuer history
-set hi=150
-
+" Longer history
+set hi=150 
 "####################################################################
 "#
 "# FileType Support
@@ -31,7 +31,7 @@ filetype indent on
 "####################################################################
 function! UPDATE_TAGS()
   let file = expand("%:p")
-  let cmd = 'ctags-exuberant -a -f tags --fields=+iaS --extra=+q '
+  let cmd = 'ctags -a -f tags --fields=+iaS --extra=+q '
   let cmd .= shellescape(file)
   call system(cmd)
 endfunction
