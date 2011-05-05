@@ -15,6 +15,12 @@ set tw=80
 
 " Longer history
 set hi=150 
+
+" No error bell
+set noerrorbells
+set visualbell
+set t_vb=
+
 "####################################################################
 "#
 "# FileType Support
@@ -91,6 +97,4 @@ if os == "Linux"
     imap <C-V> <ESC><C-V>i
     vmap <C-C> "+y
 endif
-
-
 
