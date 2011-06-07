@@ -6,7 +6,7 @@ snippet proto
 	};
 # Function
 snippet fun
-	function ${1:function_name} (${2:argument}) {
+	function ${1:function_name}(${2:argument}) {
 		${3:// body...}
 	}
 # Anonymous Function
@@ -14,7 +14,9 @@ snippet f
 	function(${1}) {${2}};
 # if
 snippet if
-	if (${1:true}) {${2}}
+	if (${1:true}) {
+	  ${2}
+	}
 # if ... else
 snippet ife
 	if (${1:true}) {${2}}
@@ -72,25 +74,18 @@ snippet get
 # Get Element
 snippet gett
 	getElementBy${1:Id}('${2}')${3}
-
 # Jasmine stuff
 snippet desc
 	describe("${1}", function() {
 
 	});
-
 snippet it
 	it("${1}", function(){
 
 	});
-
 snippet $
 	$('${1}').${2}
-
 snippet $(
 	$(function() {
 	  ${1}
 	});
-
-	
-	

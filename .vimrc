@@ -44,7 +44,7 @@ endfunction
 
 autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js call UPDATE_TAGS()
 
-autocmd FileType ruby,eruby,yaml,javascript set ai sw=2 sts=2 et
+autocmd FileType ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
 
 
 map <F7> <esc>:cp<cr>
