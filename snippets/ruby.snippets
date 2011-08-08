@@ -526,3 +526,15 @@ snippet	factory
 	factory :${1:class} do
 	  ${2}
 	end
+snippet ns
+	named_scope :${1}, ${2}
+snippet it
+	it "${1}" do
+	  ${2}	
+	end
+snippet desc
+	describe "${1}" do
+	  ${2}
+	end
+snippet let
+	let(:${1}) { ${2} }

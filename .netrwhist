@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/simon/Documents/yardstick/yardstick/app/controllers/admin'
-let g:netrw_dirhist_2='/Users/simon/Documents/yardstick/yardstick/app/controllers'
-let g:netrw_dirhist_3='/Users/simon/Documents/yardstick/yardstick/app/controllers/measure'
-let g:netrw_dirhist_4='/Users/simon/Documents/yardstick/yardstick/app/controllers'
-let g:netrw_dirhist_5='/Users/simon/Documents/yardstick/yardstick/app'
-let g:netrw_dirhist_6='/Users/simon/Documents/yardstick/yardstick/test/functional/admin'
-let g:netrw_dirhist_7='/Users/simon/Documents/yardstick/yardstick/lib'
-let g:netrw_dirhist_8='/Users/simon/Documents/yardstick/yardstick/lib/tasks'
-let g:netrw_dirhist_9='/Users/simon/Documents/yardstick/yardstick/test/fixtures'
+let g:netrw_dirhist_cnt =0
