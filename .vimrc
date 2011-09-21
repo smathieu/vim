@@ -98,3 +98,5 @@ if os == "Linux"
     vmap <C-C> "+y
 endif
 
+" Fix for JSLint
+let $JS_CMD='node'
