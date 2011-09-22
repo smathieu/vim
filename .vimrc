@@ -100,3 +100,6 @@ endif
 
 " Fix for JSLint
 let $JS_CMD='node'
+
+set listchars=tab:▸\ 
+

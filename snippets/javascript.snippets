@@ -104,22 +104,23 @@ snippet bbm
 	});
 snippet bbv
 	$(function() {
-	  window.${1:view} = Backbone.View.extend({
+	  window.${1:View} = Backbone.View.extend({
 	    events: {
-
+	
 	    },
-
+	
 	    initialize: function (options) {
 	      _.bindAll(this, "render");
 	    },
-
+	
 	    render: function () {
-
+	      
 	    },
-
-		viewData: function() {
-		  return {
-		  };
-		}
+	
+	    viewData: function() {
+	      return {
+	      };
+	    }
+	    
 	  });
 	});
