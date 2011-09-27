@@ -123,7 +123,6 @@ function! LoadSession()
     echo "No session loaded."
   endif
 endfunction
-<<<<<<< HEAD
 
 " au VimEnter * nested :call LoadSession()
 au VimLeave * :call MakeSession()
