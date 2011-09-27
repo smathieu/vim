@@ -98,6 +98,9 @@ if os == "Linux"
     vmap <C-C> "+y
 endif
 
+
+set listchars=tab:▸\ 
+
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
 
@@ -120,7 +123,9 @@ function! LoadSession()
     echo "No session loaded."
   endif
 endfunction
-"au VimEnter * nested :call LoadSession()
+<<<<<<< HEAD
+
+" au VimEnter * nested :call LoadSession()
 au VimLeave * :call MakeSession()
 
 command Todo :e ~/Dropbox/todo.txt
