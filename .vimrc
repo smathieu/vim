@@ -29,6 +29,7 @@ set t_vb=
 filetype on
 filetype plugin on
 filetype indent on
+syntax on
 
 "####################################################################
 "#
@@ -42,7 +43,7 @@ function! UPDATE_TAGS()
   call system(cmd)
 endfunction
 
-autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js call UPDATE_TAGS()
+autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
 autocmd FileType ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
 
@@ -100,6 +101,7 @@ endif
 
 
 set listchars=tab:▸\ 
+set list
 
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
@@ -127,4 +129,7 @@ endfunction
 " au VimEnter * nested :call LoadSession()
 au VimLeave * :call MakeSession()
 
-command Todo :e ~/Dropbox/todo.txt
+command! Todo :e ~/Dropbox/todo.txt
+
+" Pathogen config
+call pathogen#infect()
