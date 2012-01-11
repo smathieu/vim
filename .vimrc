@@ -133,3 +133,10 @@ command! Todo :e ~/Dropbox/todo.txt
 
 " Pathogen config
 call pathogen#infect()
+
+" Coffeescript
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+au BufNewFile,BufReadPost *.coffee hi link coffeeSpaceError NONE
+
