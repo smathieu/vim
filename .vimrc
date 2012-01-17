@@ -47,6 +47,7 @@ autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
 autocmd FileType ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
 
+au BufNewFile,BufRead *.pill,Guardfile set filetype=ruby
 
 map <F7> <esc>:cp<cr>
 map <F8> <esc>:cn<cr>
