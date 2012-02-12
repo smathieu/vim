@@ -3103,6 +3103,8 @@ function! s:readable_related(...) dict abort
     endif
     if self.type_name('helper')
       return s:sub(file,'<app/helpers/','test/unit/helpers/')."\n".s:sub(s:sub(file,'_test\.rb$','_spec.rb'),'<app/helpers/','spec/helpers/')
+    elseif self.type_name('presenter')
+      return s:sub(file,'<app/presenters/','test/unit/presenters/')."\n".s:sub(s:sub(file,'_test\.rb$','_spec.rb'),'app/presenters/','spec/presenters/')
     elseif self.type_name('model')
       return s:sub(file,'<app/models/','test/unit/')."\n".s:sub(s:sub(file,'_test\.rb$','_spec.rb'),'<app/models/','spec/models/')
     elseif self.type_name('controller')
