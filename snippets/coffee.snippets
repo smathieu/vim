@@ -78,17 +78,24 @@ snippet log
 	console.log(${1})
 
 snippet bbv
-	class window.NotificationRuleFormView extends Backbone.View
+	class window.${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}View extends Backbone.View
 	  events: {
-		
+	    
 	  }
 	  
 	  initialize: (options) ->
-	    
-		
+	      
 	  render: => 
-		
+	    @el.html(JST[''](@viewData()))
 
 	  viewData: =>
-		
+	    {}
 
+snippet bbm
+	class window.${1:`substitute(substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g'), 's$', '', 'g')`} extends Backbone.Model
+		${2}
+	class window.${3:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} extends Backbone.Collection
+	  model: `substitute(substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g'), 's$', '', 'g')`
+	  url: "/api/beta/`Filename()`"
+	  parse: (json) =>
+	    json.`Filename()`
