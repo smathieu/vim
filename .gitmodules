@@ -4,3 +4,6 @@
 [submodule "bundle/vim-ruby-refactoring"]
 	path = bundle/vim-ruby-refactoring
 	url = git://github.com/ecomba/vim-ruby-refactoring.git
+[submodule "bundle/snipmate-plus"]
+	path = bundle/snipmate-plus
+	url = git://github.com/acevery/snipmate-plus.git
