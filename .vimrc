@@ -13,13 +13,20 @@ set nobk
 set ruler
 set tw=80
 
+" Store temporary files in a central spot
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
 " Longer history
-set hi=150 
+set hi=1000
 
 " No error bell
 set noerrorbells
 set visualbell
 set t_vb=
+
+let mapleader=","
 
 "####################################################################
 "#
@@ -45,49 +52,98 @@ endfunction
 
 autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
-autocmd FileType ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
+autocmd FileType haml,ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
 
 au BufNewFile,BufRead *.pill,Guardfile set filetype=ruby
 
-map <F7> <esc>:cp<cr>
-map <F8> <esc>:cn<cr>
-map <F5> <esc>:tp<cr>
-map <F6> <esc>:tn<cr>
+" Insert a hash rocket with <c-l>
+imap <c-l> <space>=><space>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ARROW KEYS ARE UNACCEPTABLE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO RSPEC LET
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+endfunction
+:command! PromoteToLet :call PromoteToLet()
+:map <leader>p :PromoteToLet<cr>
+
 
 if has("gui_running") 
   highlight SpellBad term=underline gui=undercurl guisp=Orange 
 endif 
 
-" Find file in current directory and edit it.
-function! Find(name)
-  let l:list=system("find . -name '".a:name."' | perl -ne 'print \"$.\\t$_\"'")
-  let l:num=strlen(substitute(l:list, "[^\n]", "", "g"))
-  if l:num < 1
-    echo "'".a:name."' not found"
-    return
-  endif
-  if l:num != 1
-    echo l:list
-    let l:input=input("Which ? (CR=nothing)\n")
-    if strlen(l:input)==0
-      return
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RUNNING TESTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>t :call RunTestFile()<cr>
+map <leader>T :call RunNearestTest()<cr>
+map <leader>a :call RunTests('')<cr>
+map <leader>c :w\|:!script/features<cr>
+map <leader>w :w\|:!script/features --profile wip<cr>
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
     endif
-    if strlen(substitute(l:input, "[0-9]", "", "g"))>0
-      echo "Not a number"
-      return
-    endif
-    if l:input<1 || l:input>l:num
-      echo "Out of range"
-      return
-    endif
-    let l:line=matchstr("\n".l:list, "\n".l:input."\t[^\n]*")
-  else
-    let l:line=l:list
-  endif
-  let l:line=substitute(l:line, "^[^\t]*\t./", "", "")
-  execute ":e ".l:line
+
+    " Run the tests for the previously-marked file.
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+    if in_test_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
 endfunction
-command! -nargs=1 Find :call Find("<args>")
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number . " -b")
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    if match(a:filename, '\.feature$') != -1
+        exec ":!script/features " . a:filename
+    else
+        if filereadable("script/test")
+            exec ":!script/test " . a:filename
+        elseif filereadable(expand("~/.vim/bin/run_test"))
+            exec ":!" . expand("~/.vim/bin/run_test") . " " . a:filename
+        elseif filereadable("Gemfile")
+            exec ":!bundle exec ruby -Itest " . a:filename
+        else
+            exec ":!ruby -Itest " . a:filename
+        end
+    end
+endfunction
 
 
 let os = substitute(system('uname'), "\n", "", "")
@@ -106,29 +162,6 @@ set list
 
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
-
-function! MakeSession()
-  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
-  if (filewritable(b:sessiondir) != 2)
-    exe 'silent !mkdir -p ' b:sessiondir
-    redraw!
-  endif
-  let b:filename = b:sessiondir . '/session.vim'
-  exe "mksession! " . b:filename
-endfunction
-
-function! LoadSession()
-  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
-  let b:sessionfile = b:sessiondir . "/session.vim"
-  if (filereadable(b:sessionfile))
-    exe 'source ' b:sessionfile
-  else
-    echo "No session loaded."
-  endif
-endfunction
-
-" au VimEnter * nested :call LoadSession()
-au VimLeave * :call MakeSession()
 
 command! Todo :e ~/Dropbox/todo.txt
 
