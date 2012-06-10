@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/simon/Documents/code/puppet/modules/nginx'
 let g:netrw_dirhist_2='/Users/simon/Documents/code/web/script'
 let g:netrw_dirhist_3='/Users/simon/Library/Application Support/Pow/Hosts'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/Users/simon/Documents/code/web/test'
 let g:netrw_dirhist_6='/Users/simon/Documents/code/fake_arel'
 let g:netrw_dirhist_7='/Users/simon/Documents/code/pd-cap-recipes/.git'
 let g:netrw_dirhist_8='/Users/simon/.rvm/gems/ree-1.8.7-2012.01@pagerduty/bundler/gems/pd-cap-recipes-24b267f7a89b'
+let g:netrw_dirhist_9='/Users/simon/Documents/code/acts_as_immutable/.git'
