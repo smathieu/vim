@@ -87,3 +87,12 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+snippet tc
+	import unittest
+
+	class Test${1:MyTest}(unittest.TestCase):
+		def test_#{2}:
+snippet ase
+	self.assertEqual(${1}, ${2})
+snippet ast
+	self.assertTrue(${1})

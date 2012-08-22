@@ -55,6 +55,7 @@ autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 autocmd FileType haml,ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
 
 au BufNewFile,BufRead *.pill,Guardfile set filetype=ruby
+au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
 
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
@@ -81,9 +82,9 @@ endfunction
 :map <leader>p :PromoteToLet<cr>
 
 
-if has("gui_running") 
-  highlight SpellBad term=underline gui=undercurl guisp=Orange 
-endif 
+" if has("gui_running") 
+"   highlight SpellBad term=underline gui=undercurl guisp=Orange 
+" endif 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
@@ -181,6 +182,6 @@ au FocusLost * silent! wa
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
+" let g:syntastic_enable_signs=1
+" let g:syntastic_auto_loc_list=1
 " 
