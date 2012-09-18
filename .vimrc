@@ -11,7 +11,6 @@ set ai
 set nocp
 set nobk
 set ruler
-set tw=80
 
 " Store temporary files in a central spot
 set backup
@@ -52,7 +51,8 @@ endfunction
 
 autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
-autocmd FileType haml,ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
+autocmd FileType haml,ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et tw=80
+autocmd FileType txt set tw=80
 
 au BufNewFile,BufRead *.pill,Guardfile set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
