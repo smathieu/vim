@@ -54,7 +54,7 @@ autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
 autocmd FileType haml,ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
 
-au BufNewFile,BufRead *.pill,Guardfile set filetype=ruby
+au BufNewFile,BufRead *.pill,Guardfile,*.jsonapi set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
 
 " Insert a hash rocket with <c-l>
