@@ -50,12 +50,15 @@ function! UPDATE_TAGS()
   call system(cmd)
 endfunction
 
-autocmd BufWritePost *.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
+autocmd BufWritePost *.scala,*.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
 autocmd FileType haml,ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et
 
-au BufNewFile,BufRead *.pill,Guardfile,*.jsonapi set filetype=ruby
+au BufNewFile,BufRead *.pill,Capfile,Guardfile,*.jsonapi set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
+
+au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=80
+au BufNewFile,BufRead *.md set filetype=markdown
 
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
