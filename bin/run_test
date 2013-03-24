@@ -18,17 +18,29 @@ if [ $# -gt 0 ]; then # we have args
         need_rails=1
     fi
 else # we have no args
-    filename='test'
+    filename=''
 fi
 
 if [[ $filename =~ "_spec.rb" ]]; then
-  command='rspec'
+    command='rspec'
+elif [ -z "$filename" ]; then
+    command='rake'
 else
-  command='ruby -Itest'
+    echo "NO FILE NAME $filename"
+    command='ruby -Itest'
 fi
 
 if [ $need_rails -eq 1 ]; then
     command="ruby -S bundle exec $command"
 fi
 
-RAILS_ENV=test $command $filename
+echo $command
+
+command="RAILS_ENV=test $command $filename"
+
+echo $PWD
+if [ -p command-pipe ]; then
+  echo $command > command-pipe
+else
+  $(echo $command)
+fi

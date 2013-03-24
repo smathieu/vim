@@ -56,6 +56,7 @@ autocmd FileType txt set tw=80
 
 au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
+au BufNewFile,BufRead *.less set filetype=css
 
 au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=80
 au BufNewFile,BufRead *.md set filetype=markdown
@@ -92,11 +93,11 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>t :call RunTestFile()<cr>
-map <leader>T :call RunNearestTest()<cr>
-map <leader>a :call RunTests('')<cr>
-map <leader>c :w\|:!script/features<cr>
-map <leader>w :w\|:!script/features --profile wip<cr>
+map <leader>t :wa\|:call RunTestFile()<cr><cr>
+map <leader>T :call RunNearestTest()<cr><cr>
+map <leader>a :call RunTests('')<cr><cr>
+map <leader>c :w\|:!script/features<cr><cr>
+map <leader>w :w\|:!script/features --profile wip<cr><cr>
 
 function! RunTestFile(...)
     if a:0
@@ -143,6 +144,8 @@ function! RunTests(filename)
             exec ":!" . expand("~/.vim/bin/run_test") . " " . a:filename
         elseif filereadable("Gemfile")
             exec ":!bundle exec ruby -Itest " . a:filename
+        elseif isdirectory("spec")
+            exec ":!rspec " . a:filename
         else
             exec ":!ruby -Itest " . a:filename
         end
@@ -180,11 +183,6 @@ au BufNewFile,BufReadPost *.coffee hi link coffeeSpaceError NONE
 
 au FocusLost * silent! wa
 
-" Syntastic
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_enable_signs=1
-" let g:syntastic_auto_loc_list=1
-" 
+if filereadable('custom.vimrc')
+  source custom.vimrc
+end

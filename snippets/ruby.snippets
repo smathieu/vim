@@ -69,63 +69,56 @@ snippet until
 		${2}
 	end
 snippet cla class .. end
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	class ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
 		${2}
 	end
 snippet cla class .. initialize .. end
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	class ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
 		def initialize(${2:args})
 			${3}
 		end
-
-
 	end
 snippet cla class .. < ParentClass .. initialize .. end
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < ${2:ParentClass}
+	class ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} < ${2:ParentClass}
 		def initialize(${3:args})
 			${4}
 		end
-
-
 	end
 snippet cla ClassName = Struct .. do .. end
-	${1:`substitute(Filename(), '^.', '\u&', '')`} = Struct.new(:${2:attr_names}) do
+	${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} = Struct.new(:${2:attr_names}) do
 		def ${3:method_name}
 			${4}
 		end
-
-
 	end
 snippet cla class BlankSlate .. initialize .. end
 	class ${1:BlankSlate}
 		instance_methods.each { |meth| undef_method(meth) unless meth =~ /\A__/ }
+	end
 snippet cla class << self .. end
 	class << ${1:self}
 		${2}
 	end
 # class .. < DelegateClass .. initialize .. end
 snippet cla-
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < DelegateClass(${2:ParentClass})
+	class ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} < DelegateClass(${2:ParentClass})
 		def initialize(${3:args})
 			super(${4:del_obj})
 
 			${5}
 		end
-
-
 	end
 snippet mod module .. end
-	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	module ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
 		${2}
 	end
 snippet mod module .. module_function .. end
-	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	module ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
 		module_function
 
 		${2}
 	end
 snippet mod module .. ClassMethods .. end
-	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+	module ${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
 		module ClassMethods
 			${2}
 		end
@@ -550,3 +543,23 @@ snippet desc
 	end
 snippet let
 	let(:${1}) { ${2} }
+snippet cont
+	context "${1:message}" do
+		${2}
+	end
+snippet bef
+	before :${1:each} do
+		${2}
+	end
+snippet aft
+	after :${1:each} do
+		${2}
+	end
+snippet subj
+	subject { ${1} }
+snippet spec
+	require 'spec_helper'
+
+	describe `substitute(substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g'), 'Spec$', '', 'g')` do
+	  ${1}
+	end
