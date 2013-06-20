@@ -22,7 +22,11 @@ else # we have no args
 fi
 
 if [[ $filename =~ "_spec.rb" ]]; then
-    command='rspec'
+    if [[ -e ".zeus.sock" ]]; then
+      command='zeus test'
+    else
+      command='rspec'
+    fi
 elif [ -z "$filename" ]; then
     command='rake'
 else
@@ -30,9 +34,9 @@ else
     command='ruby -Itest'
 fi
 
-if [ $need_rails -eq 1 ]; then
-    command="ruby -S bundle exec $command"
-fi
+# if [ $need_rails -eq 1 ]; then
+#     command="ruby -S bundle exec $command"
+# fi
 
 echo $command
 

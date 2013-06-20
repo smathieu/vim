@@ -128,7 +128,7 @@ snippet mod module .. ClassMethods .. end
 		end
 
 		def self.included(receiver)
-			receiver.extend         ClassMethods
+			receiver.extend ClassMethods
 			receiver.send :include, InstanceMethods
 		end
 	end
@@ -511,9 +511,6 @@ snippet tas
 	end
 snippet context
 	context "${1}" do
-	  setup do
-		${2}
-	  end
 	end
 snippet should 
 	should "${1}" do
