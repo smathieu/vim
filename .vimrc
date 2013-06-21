@@ -98,6 +98,7 @@ map <leader>T :call RunNearestTest()<cr><cr>
 map <leader>a :call RunTests('')<cr><cr>
 map <leader>c :w\|:!script/features<cr><cr>
 map <leader>w :w\|:!script/features --profile wip<cr><cr>
+map <leader>, :CommandT<cr>
 
 function! RunTestFile(...)
     if a:0
