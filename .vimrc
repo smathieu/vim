@@ -109,8 +109,12 @@ function! RunTestFile(...)
 
     " Run the tests for the previously-marked file.
     let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+    let in_gemfile = match(expand("%"), '\(Gemfile\)$') != -1
     if in_test_file
         call SetTestFile(command_suffix)
+    elseif in_gemfile
+        exec ":!run-command bundle install"
+        return
     elseif !exists("t:grb_test_file")
         return
     end

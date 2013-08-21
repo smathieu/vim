@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/usr/local/Cellar/hadoop/1.1.2/libexec/conf'
 let g:netrw_dirhist_2='/Users/simon/Documents/rainforest/heroku'
 let g:netrw_dirhist_3='/Users/simon/bin/.git'
+let g:netrw_dirhist_4='/Users/simon/floobits/share/fredsterss/docs'
+let g:netrw_dirhist_5='/Users/simon/floobits/share/fredsterss/docs/assets'
+let g:netrw_dirhist_6='/Users/simon/floobits/share/fredsterss/docs/assets/fonts'
+let g:netrw_dirhist_7='/Users/simon/floobits/share/fredsterss/docs'
