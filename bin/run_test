@@ -44,9 +44,3 @@ command="RAILS_ENV=test $command $1"
 
 echo $command
 run-command $command
-if [ -p command-pipe ]; then
-  echo $command > command-pipe
-else
-  echo "No command pipe"
-  $(echo $command)
-fi
