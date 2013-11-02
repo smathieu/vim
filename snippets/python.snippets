@@ -91,7 +91,10 @@ snippet tc
 	import unittest
 
 	class Test${1:MyTest}(unittest.TestCase):
-		def test_#{2}:
+		def test_${2}(self):
+
+	if __name__ == '__main__':
+		unittest.main()
 snippet ase
 	self.assertEqual(${1}, ${2})
 snippet ast
