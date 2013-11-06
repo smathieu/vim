@@ -38,6 +38,8 @@ fi
 #     command="ruby -S bundle exec $command"
 # fi
 
+command="ruby -S bundle exec $command"
+
 echo $command
 
 command="RAILS_ENV=test $command $1"
