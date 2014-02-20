@@ -34,3 +34,6 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule "bundle/vim-actionscript"]
+	path = bundle/vim-actionscript
+	url = git@github.com:jeroenbourgois/vim-actionscript.git

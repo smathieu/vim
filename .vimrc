@@ -57,6 +57,7 @@ autocmd FileType txt set tw=80
 au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
 au BufNewFile,BufRead *.less set filetype=css
+au BufNewFile,BufRead Gruntfile set filetype=javascript
 
 au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=80
 au BufNewFile,BufRead *.md set filetype=markdown
@@ -185,6 +186,9 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 au BufNewFile,BufReadPost *.coffee hi link coffeeSpaceError NONE
+
+" Puppet
+au BufNewFile,BufReadPost *.pp set tw=0
 
 au FocusLost * silent! wa
 
