@@ -6,6 +6,7 @@ set sw=4
 set cindent
 set nowb
 set expandtab
+
 set smarttab
 set ai
 set nocp
@@ -99,6 +100,16 @@ map <leader>a :call RunTests('')<cr><cr>
 map <leader>c :w\|:!script/features<cr><cr>
 map <leader>w :w\|:!script/features --profile wip<cr><cr>
 map <leader>, :CtrlP<cr>
+
+" Ignore extra things in ctrlp
+set wildignore+=tags
+set wildignore+=*/tmp/*
+set wildignore+=*/spec/vcr/*
+set wildignore+=*/public/*
+set wildignore+=*/chef/*
+set wildignore+=*/coverage/*
+set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig
+
 
 function! RunTestFile(...)
     if a:0
