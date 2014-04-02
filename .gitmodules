@@ -40,3 +40,6 @@
 [submodule "bundle/Conque-Shell"]
 	path = bundle/Conque-Shell
 	url = git@github.com:vim-scripts/Conque-Shell.git
+[submodule "bundle/Align"]
+	path = bundle/Align
+	url = git@github.com:vim-scripts/Align.git
