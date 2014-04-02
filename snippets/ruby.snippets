@@ -534,6 +534,8 @@ snippet it
 	it "${1}" do
 	  ${2}	
 	end
+snippet its
+	its(:${1}) { should ${2} }
 snippet desc
 	describe "${1}" do
 	  ${2}
