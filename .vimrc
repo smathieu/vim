@@ -180,7 +180,7 @@ if os == "Linux"
 endif
 
 
-set listchars=tab:▸\ 
+set listchars=tab:▸\ ,trail:·
 set list
 
 " Use Node.js for JavaScript interpretation
