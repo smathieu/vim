@@ -38,11 +38,11 @@ fi
 #     command="ruby -S bundle exec $command"
 # fi
 
-command="ruby -S $command"
+if [[ ! -e ".zeus.sock" ]]; then
+  command="RAILS_ENV=test ruby -S $command"
+fi
 
-echo $command
-
-command="RAILS_ENV=test $command $1"
+command="$command $1"
 
 echo $command
 run-command $command

@@ -63,6 +63,8 @@ au BufNewFile,BufRead Gruntfile set filetype=javascript
 au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=80
 au BufNewFile,BufRead *.md set filetype=markdown
 
+autocmd FileType markdown set tw=0
+
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 
@@ -206,3 +208,6 @@ au FocusLost * silent! wa
 if filereadable('custom.vimrc')
   source custom.vimrc
 end
+
+let g:ackprg = "ack -H --nocolor --nogroup --column --smart-case --follow"
+

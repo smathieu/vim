@@ -52,3 +52,6 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = git@github.com:mileszs/ack.vim.git
+[submodule "bundle/vim-reveal-in-finder"]
+	path = bundle/vim-reveal-in-finder
+	url = git@github.com:henrik/vim-reveal-in-finder.git
