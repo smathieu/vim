@@ -27,8 +27,14 @@ if [[ $filename =~ "_spec.rb" ]]; then
     else
       command='rspec'
     fi
+elif [[ $filename =~ "_spec.coffee" ]]; then
+    if [[ -e ".zeus.sock" ]]; then
+      command='zeus r ./script/run_jasmine.rb'
+    else
+      command='rails run ./script/run_jasmine.rb'
+    fi
 elif [ -z "$filename" ]; then
-    command='rake'
+    command='bundle exec rake'
 else
     echo "NO FILE NAME $filename"
     command='ruby -Itest'

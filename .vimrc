@@ -108,7 +108,7 @@ map <leader>, :CtrlP<cr>
 set wildignore+=tags
 set wildignore+=*/tmp/*
 set wildignore+=*/spec/vcr/*
-set wildignore+=*/public/*
+set wildignore+=./public/*
 set wildignore+=*/chef/*
 set wildignore+=*/coverage/*
 set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig
@@ -122,8 +122,8 @@ function! RunTestFile(...)
     endif
 
     " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-    let in_gemfile = match(expand("%"), '\(Gemfile\)$') != -1
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\|_spec.coffee\)$') != -1
+    let in_gemfile = match(expand("%"), '\(Gemfile\)$') != -1 || match(expand("%"), '\(\.gemspec\)$') != -1
     if in_test_file
         call SetTestFile(command_suffix)
     elseif in_gemfile
@@ -199,6 +199,7 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 au BufNewFile,BufReadPost *.coffee hi link coffeeSpaceError NONE
+au BufNewFile,BufReadPost *.txt set tw=0
 
 " Puppet
 au BufNewFile,BufReadPost *.pp set tw=0

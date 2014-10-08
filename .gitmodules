@@ -55,3 +55,6 @@
 [submodule "bundle/vim-reveal-in-finder"]
 	path = bundle/vim-reveal-in-finder
 	url = git@github.com:henrik/vim-reveal-in-finder.git
+[submodule "bundle/vim-go"]
+	path = bundle/vim-go
+	url = git@github.com:fatih/vim-go.git

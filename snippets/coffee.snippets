@@ -67,6 +67,9 @@ snippet desc
 snippet ex
 	expect(${1}).to${2:Match}(${3})
 
+snippet ee
+	expect(${1}).toEqual(${2})
+
 snippet $
 	$(${1})
 
@@ -76,20 +79,22 @@ snippet it
 
 snippet log
 	console.log(${1})
-
 snippet bbv
-	class window.${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}View extends Backbone.View
-	  template: `Filename()`
-	  events: 
-	  
+	class @${1:`substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}View extends BaseView
+	  template: "`Filename()`"
+	
+	  events:
+	    {}
+	
 	  initialize: (options) ->
-	      
+	
 	  render: => 
-	    @$el.html(JST[@template](@viewData()))
-
+	    @$el.html @renderTemplate(@viewData())
+	    super
+	    @
+	
 	  viewData: =>
 	    {}
-
 snippet bbm
 	class window.${1:`substitute(substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g'), 's$', '', 'g')`} extends Backbone.Model
 		${2}
