@@ -52,13 +52,14 @@ endfunction
 
 autocmd BufWritePost *.scala,*.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
-autocmd FileType haml,ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et tw=80
+autocmd FileType haml,ruby,eruby,yaml,javascript,coffee,scala set ai sw=2 sts=2 et tw=80
 autocmd FileType txt set tw=80
 
 au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead Gruntfile set filetype=javascript
+au BufNewFile,BufRead BUILD,*.aurora set filetype=python
 
 au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=80
 au BufNewFile,BufRead *.md set filetype=markdown
@@ -102,7 +103,7 @@ map <leader>T :call RunNearestTest()<cr><cr>
 map <leader>a :call RunTests('')<cr><cr>
 map <leader>c :w\|:!script/features<cr><cr>
 map <leader>w :w\|:!script/features --profile wip<cr><cr>
-map <leader>, :CtrlP<cr>
+map <leader>, :CtrlP getcwd()<cr>
 
 " Ignore extra things in ctrlp
 set wildignore+=tags
