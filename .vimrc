@@ -201,7 +201,14 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 au BufNewFile,BufReadPost *.coffee hi link coffeeSpaceError NONE
 au BufNewFile,BufReadPost *.txt set tw=0
-au BufWritePost * :ClearAllCtrlPCaches
+
+function! ClearAllCtrlPCachesOnNewFile()
+  if !filereadable(expand('%'))
+      ClearAllCtrlPCaches
+  endif
+endfunction
+
+au BufWritePre * call ClearAllCtrlPCachesOnNewFile()
 
 " Puppet
 au BufNewFile,BufReadPost *.pp set tw=0
