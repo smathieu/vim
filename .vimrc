@@ -52,16 +52,16 @@ endfunction
 
 autocmd BufWritePost *.scala,*.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
-autocmd FileType haml,ruby,eruby,yaml,javascript,coffee,scala set ai sw=2 sts=2 et tw=80
+autocmd FileType haml,ruby,eruby,yaml,javascript,coffee,scala,python,cpp,c set ai sw=2 sts=2 et tw=100
 autocmd FileType txt set tw=80
 
 au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead Gruntfile set filetype=javascript
-au BufNewFile,BufRead BUILD,*.aurora set filetype=python
+au BufNewFile,BufRead BUILD,SConstruct,SConstscript,*.aurora set filetype=python
 
-au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=80
+au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=100
 au BufNewFile,BufRead *.md set filetype=markdown
 
 autocmd FileType markdown set tw=0
@@ -112,7 +112,8 @@ set wildignore+=*/spec/vcr/*
 set wildignore+=./public/*
 set wildignore+=*/chef/*
 set wildignore+=*/coverage/*
-set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig
+set wildignore+=*/build/*
+set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig,*.o
 
 
 function! RunTestFile(...)
@@ -217,6 +218,10 @@ au FocusLost * silent! wa
 
 if filereadable('custom.vimrc')
   source custom.vimrc
+end
+
+if filereadable(expand('~/.vimrc-local'))
+  source ~/.vimrc-local
 end
 
 let g:ackprg = "ack -H --nocolor --nogroup --column --smart-case --follow"
