@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+#set -e
 
 need_rails=0
 
@@ -33,6 +33,8 @@ elif [[ $filename =~ "_spec.coffee" ]]; then
     else
       command='rails run ./script/run_jasmine.rb'
     fi
+elif [[ $filename =~ ".feature" ]]; then
+    command="rake cucumber:api FEATURE=\"$filename\""
 elif [ -z "$filename" ]; then
     command='bundle exec rake'
 else
@@ -40,9 +42,9 @@ else
     command='ruby -Itest'
 fi
 
-# if [ $need_rails -eq 1 ]; then
-#     command="ruby -S bundle exec $command"
-# fi
+if [ $need_rails -eq 1 ]; then
+    command="bundle exec $command"
+fi
 
 if [[ ! -e ".zeus.sock" ]]; then
   command="RAILS_ENV=test ruby -S $command"

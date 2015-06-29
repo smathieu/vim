@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 color torte
 syn on
 set ts=4
@@ -55,7 +58,7 @@ autocmd BufWritePost *.scala,*.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 autocmd FileType haml,ruby,eruby,yaml,javascript,coffee,scala,python,cpp,c set ai sw=2 sts=2 et tw=100
 autocmd FileType txt set tw=80
 
-au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile set filetype=ruby
+au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile,*.god,*.rabl set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead Gruntfile set filetype=javascript
@@ -108,6 +111,10 @@ map <leader>, :CtrlP getcwd()<cr>
 " Ignore extra things in ctrlp
 set wildignore+=tags
 set wildignore+=*/tmp/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/spec/reports/*
+set wildignore+=*/bower/*
+set wildignore+=*/logs?/*
 set wildignore+=*/spec/vcr/*
 set wildignore+=./public/*
 set wildignore+=*/chef/*
@@ -156,7 +163,7 @@ function! RunTests(filename)
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    if match(a:filename, '\.feature$') != -1
+    if match(a:filename, '\.feature$') != -1 && filereadable("script/features")
         exec ":!script/features " . a:filename
     else
         if filereadable("script/test")
