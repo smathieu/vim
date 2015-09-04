@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 color torte
 syn on
 set ts=4
@@ -52,15 +55,16 @@ endfunction
 
 autocmd BufWritePost *.scala,*.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 
-autocmd FileType haml,ruby,eruby,yaml,javascript,coffee set ai sw=2 sts=2 et tw=80
+autocmd FileType haml,ruby,eruby,yaml,javascript,coffee,scala,python,cpp,c set ai sw=2 sts=2 et tw=100
 autocmd FileType txt set tw=80
 
-au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile set filetype=ruby
+au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile,*.god,*.rabl set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead Gruntfile set filetype=javascript
+au BufNewFile,BufRead BUILD,SConstruct,SConstscript,*.aurora set filetype=python
 
-au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=80
+au BufNewFile,BufRead *.sbt,*.thrift set filetype=scala tw=100
 au BufNewFile,BufRead *.md set filetype=markdown
 
 autocmd FileType markdown set tw=0
@@ -102,16 +106,21 @@ map <leader>T :call RunNearestTest()<cr><cr>
 map <leader>a :call RunTests('')<cr><cr>
 map <leader>c :w\|:!script/features<cr><cr>
 map <leader>w :w\|:!script/features --profile wip<cr><cr>
-map <leader>, :CtrlP<cr>
+map <leader>, :CtrlP getcwd()<cr>
 
 " Ignore extra things in ctrlp
 set wildignore+=tags
 set wildignore+=*/tmp/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/spec/reports/*
+set wildignore+=*/bower/*
+set wildignore+=*/logs?/*
 set wildignore+=*/spec/vcr/*
 set wildignore+=./public/*
 set wildignore+=*/chef/*
 set wildignore+=*/coverage/*
-set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig
+set wildignore+=*/build/*
+set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig,*.o
 
 
 function! RunTestFile(...)
@@ -154,7 +163,7 @@ function! RunTests(filename)
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    if match(a:filename, '\.feature$') != -1
+    if match(a:filename, '\.feature$') != -1 && filereadable("script/features")
         exec ":!script/features " . a:filename
     else
         if filereadable("script/test")
@@ -201,6 +210,14 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 au BufNewFile,BufReadPost *.coffee hi link coffeeSpaceError NONE
 au BufNewFile,BufReadPost *.txt set tw=0
 
+function! ClearAllCtrlPCachesOnNewFile()
+  if !filereadable(expand('%'))
+      ClearAllCtrlPCaches
+  endif
+endfunction
+
+au BufWritePre * call ClearAllCtrlPCachesOnNewFile()
+
 " Puppet
 au BufNewFile,BufReadPost *.pp set tw=0
 
@@ -208,6 +225,10 @@ au FocusLost * silent! wa
 
 if filereadable('custom.vimrc')
   source custom.vimrc
+end
+
+if filereadable(expand('~/.vimrc-local'))
+  source ~/.vimrc-local
 end
 
 let g:ackprg = "ack -H --nocolor --nogroup --column --smart-case --follow"
