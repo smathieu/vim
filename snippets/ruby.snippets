@@ -572,3 +572,9 @@ snippet scope
 	scope :${1}, -> { |${2:args}| }
 snippet ee
 	expect(${1}).to eq(${2})
+snippet e
+	expect(${1}).to ${2:eq}
+snippet allow
+	allow(${1}).to receive(${2}).and_return(${3})
+snippet bb
+	byebug
