@@ -24,6 +24,8 @@ fi
 if [[ $filename =~ "_spec.rb" ]]; then
     if [[ -e ".zeus.sock" ]]; then
       command='zeus test'
+    elif [[ -e "$PWD/bin/rspec" ]]; then
+      command="$PWD/bin/rspec"
     else
       command='bundle exec rspec'
     fi
