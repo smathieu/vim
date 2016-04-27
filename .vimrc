@@ -58,7 +58,7 @@ autocmd BufWritePost *.scala,*.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
 autocmd FileType haml,ruby,eruby,yaml,javascript,coffee,scala,python,cpp,c set ai sw=2 sts=2 et tw=100
 autocmd FileType txt set tw=80
 
-au BufNewFile,BufRead *.pill,Capfile,Guardfile,Procfile,*.god,*.rabl set filetype=ruby
+au BufNewFile,BufRead *.pill,Capfile,Berksfile,Guardfile,Procfile,*.god,*.rabl set filetype=ruby
 au BufNewFile,BufRead *.hamljs,*.hamlc set filetype=haml
 au BufNewFile,BufRead *.less set filetype=css
 au BufNewFile,BufRead Gruntfile set filetype=javascript
@@ -232,4 +232,9 @@ if filereadable(expand('~/.vimrc-local'))
 end
 
 let g:ackprg = "ack -H --nocolor --nogroup --column --smart-case --follow"
+
+
+" Convert ruby hash to new style
+nmap <leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
+vmap <leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
 

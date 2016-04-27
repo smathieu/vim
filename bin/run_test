@@ -34,7 +34,7 @@ elif [[ $filename =~ "_spec.coffee" ]]; then
       command='rails run ./script/run_jasmine.rb'
     fi
 elif [[ $filename =~ ".feature" ]]; then
-    command="rake cucumber:api FEATURE=\"$filename\""
+    command="bundle exec cucumber -p api"
 elif [ -z "$filename" ]; then
     command='bundle exec rake'
 else

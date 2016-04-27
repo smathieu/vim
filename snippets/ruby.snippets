@@ -568,7 +568,11 @@ snippet trait
 	end
 snippet pry
 	require 'pry'; binding.pry
+snippet bb
+	require 'pry-byebug'; byebug
 snippet scope
 	scope :${1}, -> { |${2:args}| }
 snippet ee
 	expect(${1}).to eq(${2})
+snippet est
+	expect(subject.status).to eq(${2:200})
