@@ -576,3 +576,7 @@ snippet ee
 	expect(${1}).to eq(${2})
 snippet est
 	expect(subject.status).to eq(${2:200})
+snippet allow
+	allow(${1}).to receive(${2}).and_return(${3})
+snippet bb
+	byebug
