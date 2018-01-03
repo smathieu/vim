@@ -67,3 +67,6 @@
 [submodule "bundle/tlib_vim"]
 	path = bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
+[submodule "bundle/swift.vim"]
+	path = bundle/swift.vim
+	url = git@github.com:keith/swift.vim.git
