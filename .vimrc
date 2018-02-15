@@ -232,7 +232,7 @@ if filereadable(expand('~/.vimrc-local'))
 end
 
 let g:ackprg = "ack -H --nocolor --nogroup --column --smart-case --follow"
-
+noremap <Leader>f :Ack "\b<cword>\b"<cr>
 
 " Convert ruby hash to new style
 nmap <leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>

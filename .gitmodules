@@ -10,9 +10,6 @@
 [submodule "bundle/vim-scala"]
 	path = bundle/vim-scala
 	url = git://github.com/derekwyatt/vim-scala.git
-[submodule "bundle/jslint"]
-	path = bundle/jslint
-	url = git://github.com/hallettj/jslint.vim.git
 [submodule "bundle/vim-monit"]
 	path = bundle/vim-monit
 	url = git://github.com/tmatilai/vim-monit.git
