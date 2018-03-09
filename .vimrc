@@ -122,6 +122,7 @@ set wildignore+=*/coverage/*
 set wildignore+=*/build/*
 set wildignore+=*.png,*.jpg,*.otf,*.woff,*.jpeg,*.orig,*.o
 
+let g:ctrlp_max_files = 100000
 
 function! RunTestFile(...)
     if a:0
