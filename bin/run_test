@@ -3,6 +3,7 @@
 #set -e
 
 need_rails=0
+need_ruby=1
 
 if [ $# -gt 0 ]; then # we have args
     # Remove trailing line numbers from filename, e.g. spec/my_spec.rb:33
@@ -37,6 +38,9 @@ elif [[ $filename =~ "_spec.coffee" ]]; then
     fi
 elif [[ $filename =~ ".feature" ]]; then
     command="bundle exec cucumber -p api"
+elif [[ $filename =~ ".test.js" ]]; then
+    need_ruby=0
+    command="yarn run test"
 elif [ -z "$filename" ]; then
     command='bundle exec rake'
 else
@@ -49,7 +53,10 @@ if [ $need_rails -eq 1 ]; then
 fi
 
 if [[ ! -e ".zeus.sock" ]]; then
-  command="RAILS_ENV=test ruby -S $command"
+  echo $need_ruby
+  if [[ $need_ruby -eq "1" ]]; then
+    command="RAILS_ENV=test ruby -S $command"
+  fi
 fi
 
 command="$command $1"
