@@ -37,12 +37,18 @@ elif [[ $filename =~ "_spec.coffee" ]]; then
       command='rails run ./script/run_jasmine.rb'
     fi
 elif [[ $filename =~ ".feature" ]]; then
-    command="bundle exec cucumber -p api"
+    command="bundle exec cucumber"
 elif [[ $filename =~ ".test.js" ]]; then
     need_ruby=0
     command="yarn run test"
 elif [ -z "$filename" ]; then
-    command='bundle exec rake'
+  command='bundle exec rake'
+elif [[ $filename =~ "_test.rb" ]]; then
+    if [[ -e "$PWD/bin/rails" ]]; then
+      command="$PWD/bin/rails test"
+    else
+      command='ruby -Itest'
+    fi
 else
     echo "NO FILE NAME $filename"
     command='ruby -Itest'

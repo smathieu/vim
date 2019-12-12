@@ -53,7 +53,7 @@ function! UPDATE_TAGS()
   call system(cmd)
 endfunction
 
-autocmd BufWritePost *.scala,*.cpp,*.h,*.c,*.rb,*.js,*.coffee call UPDATE_TAGS()
+autocmd BufWritePost *.scala,*.cpp,*.h,*.c,*.rb,*.js,*.coffee,*.php call UPDATE_TAGS()
 
 autocmd FileType haml,ruby,eruby,yaml,javascript,coffee,scala,python,cpp,c set ai sw=2 sts=2 et tw=100
 autocmd FileType txt set tw=80
@@ -134,10 +134,14 @@ function! RunTestFile(...)
     " Run the tests for the previously-marked file.
     let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\|_spec.coffee\|\.test\.js\)$') != -1
     let in_gemfile = match(expand("%"), '\(Gemfile\)$') != -1 || match(expand("%"), '\(\.gemspec\)$') != -1
+    let in_script = match(expand("%"), 'scripts\/') != -1
     if in_test_file
         call SetTestFile(command_suffix)
     elseif in_gemfile
         exec ":!run-command bundle install"
+        return
+    elseif in_script
+        exec ":!run-command ./bin/rails runner " . expand("%")
         return
     elseif !exists("t:grb_test_file")
         return
@@ -211,6 +215,9 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 au BufNewFile,BufReadPost *.coffee hi link coffeeSpaceError NONE
 au BufNewFile,BufReadPost *.txt set tw=0
 
+" golang
+au BufNewFile,BufReadPost *.go set nolist
+
 function! ClearAllCtrlPCachesOnNewFile()
   if !filereadable(expand('%'))
       ClearAllCtrlPCaches
@@ -238,4 +245,6 @@ noremap <Leader>f :Ack "\b<cword>\b"<cr>
 " Convert ruby hash to new style
 nmap <leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
 vmap <leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
+
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 

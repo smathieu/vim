@@ -73,3 +73,21 @@
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
+[submodule "bundle/vim-graphql"]
+	path = bundle/vim-graphql
+	url = https://github.com/jparise/vim-graphql.git
+[submodule "bundle/splijoin"]
+	path = bundle/splijoin
+	url = git@github.com:AndrewRadev/splitjoin.vim.git
+[submodule "bundle/tsuquyomi"]
+	path = bundle/tsuquyomi
+	url = git@github.com:Quramy/tsuquyomi.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git
+[submodule "bundle/vim-jsx-typescript"]
+	path = bundle/vim-jsx-typescript
+	url = git@github.com:peitalin/vim-jsx-typescript.git
+[submodule "bundle/vim-polyglot"]
+	path = bundle/vim-polyglot
+	url = git@github.com:sheerun/vim-polyglot.git

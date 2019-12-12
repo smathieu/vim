@@ -555,7 +555,7 @@ snippet subj
 snippet spec
 	require 'spec_helper'
 
-	describe `substitute(substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g'), 'Spec$', '', 'g')` do
+	RSpec.describe `substitute(substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g'), 'Spec$', '', 'g')` do
 	  ${1}
 	end
 snippet trait
@@ -564,7 +564,7 @@ snippet trait
 	end
 snippet pry
 	require 'pry'; binding.pry
-snippet bb
+snippet bbb
 	require 'pry-byebug'; byebug
 snippet scope
 	scope :${1}, -> { |${2:args}| }
