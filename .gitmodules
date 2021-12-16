@@ -1,63 +1,63 @@
 [submodule "bundle/handlebars"]
 	path = bundle/handlebars
-	url = git://github.com/nono/vim-handlebars.git
+	url = https://github.com/nono/vim-handlebars.git
 [submodule "bundle/vim-ruby-refactoring"]
 	path = bundle/vim-ruby-refactoring
-	url = git://github.com/ecomba/vim-ruby-refactoring.git
+	url = https://github.com/ecomba/vim-ruby-refactoring.git
 [submodule "bundle/snipmate-plus"]
 	path = bundle/snipmate-plus
-	url = git://github.com/acevery/snipmate-plus.git
+	url = https://github.com/acevery/snipmate-plus.git
 [submodule "bundle/vim-scala"]
 	path = bundle/vim-scala
-	url = git://github.com/derekwyatt/vim-scala.git
+	url = https://github.com/derekwyatt/vim-scala.git
 [submodule "bundle/vim-monit"]
 	path = bundle/vim-monit
-	url = git://github.com/tmatilai/vim-monit.git
+	url = https://github.com/tmatilai/vim-monit.git
 [submodule "bundle/vim-elixir"]
 	path = bundle/vim-elixir
-	url = git@github.com:elixir-lang/vim-elixir.git
+	url = https:/github.com/elixir-lang/vim-elixir.git
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
+	url = https://github.com/tpope/vim-rails.git
 [submodule "bundle/vim-bundler"]
 	path = bundle/vim-bundler
-	url = git://github.com/tpope/vim-bundler.git
+	url = https://github.com/tpope/vim-bundler.git
 [submodule "bundle/vim-ruby"]
 	path = bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
+	url = https://github.com/vim-ruby/vim-ruby.git
 [submodule "bundle/puppet"]
 	path = bundle/puppet
-	url = git://github.com/rodjek/vim-puppet.git
+	url = https://github.com/rodjek/vim-puppet.git
 [submodule "bundle/vim-actionscript"]
 	path = bundle/vim-actionscript
-	url = git@github.com:jeroenbourgois/vim-actionscript.git
+	url = https:/github.com/jeroenbourgois/vim-actionscript.git
 [submodule "bundle/ctrlp.vim"]
 	path = bundle/ctrlp.vim
-	url = git@github.com:kien/ctrlp.vim.git
+	url = https:/github.com/kien/ctrlp.vim.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
+	url = https:/github.com/tpope/vim-fugitive.git
 [submodule "bundle/Conque-Shell"]
 	path = bundle/Conque-Shell
-	url = git@github.com:vim-scripts/Conque-Shell.git
+	url = https:/github.com/vim-scripts/Conque-Shell.git
 [submodule "bundle/Align"]
 	path = bundle/Align
-	url = git@github.com:vim-scripts/Align.git
+	url = https://github.com/vim-scripts/Align.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
+	url = https:/github.com/scrooloose/nerdtree.git
 [submodule "bundle/ack"]
 	path = bundle/ack
-	url = git@github.com:mileszs/ack.vim.git
+	url = https:/github.com/mileszs/ack.vim.git
 [submodule "bundle/vim-reveal-in-finder"]
 	path = bundle/vim-reveal-in-finder
-	url = git@github.com:henrik/vim-reveal-in-finder.git
+	url = https:/github.com/henrik/vim-reveal-in-finder.git
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
-	url = git@github.com:fatih/vim-go.git
+	url = https:/github.com/fatih/vim-go.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
-	url = git@github.com:garbas/vim-snipmate.git
+	url = https:/github.com/garbas/vim-snipmate.git
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
@@ -66,28 +66,28 @@
 	url = https://github.com/tomtom/tlib_vim.git
 [submodule "bundle/swift.vim"]
 	path = bundle/swift.vim
-	url = git@github.com:keith/swift.vim.git
+	url = https:/github.com/keith/swift.vim.git
 [submodule "bundle/splitjoin.vim"]
 	path = bundle/splitjoin.vim
-	url = git@github.com:AndrewRadev/splitjoin.vim.git
+	url = https:/github.com/AndrewRadev/splitjoin.vim.git
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
-	url = git@github.com:mxw/vim-jsx.git
+	url = https:/github.com/mxw/vim-jsx.git
 [submodule "bundle/vim-graphql"]
 	path = bundle/vim-graphql
 	url = https://github.com/jparise/vim-graphql.git
 [submodule "bundle/splijoin"]
 	path = bundle/splijoin
-	url = git@github.com:AndrewRadev/splitjoin.vim.git
+	url = https:/github.com/AndrewRadev/splitjoin.vim.git
 [submodule "bundle/tsuquyomi"]
 	path = bundle/tsuquyomi
-	url = git@github.com:Quramy/tsuquyomi.git
+	url = https:/github.com/Quramy/tsuquyomi.git
 [submodule "bundle/typescript-vim"]
 	path = bundle/typescript-vim
-	url = git@github.com:leafgarland/typescript-vim.git
+	url = https:/github.com/leafgarland/typescript-vim.git
 [submodule "bundle/vim-jsx-typescript"]
 	path = bundle/vim-jsx-typescript
-	url = git@github.com:peitalin/vim-jsx-typescript.git
+	url = https:/github.com/peitalin/vim-jsx-typescript.git
 [submodule "bundle/vim-polyglot"]
 	path = bundle/vim-polyglot
-	url = git@github.com:sheerun/vim-polyglot.git
+	url = https:/github.com/sheerun/vim-polyglot.git
