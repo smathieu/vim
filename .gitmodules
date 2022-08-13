@@ -1,18 +1,9 @@
-[submodule "bundle/handlebars"]
-	path = bundle/handlebars
-	url = https://github.com/nono/vim-handlebars.git
-[submodule "bundle/vim-ruby-refactoring"]
-	path = bundle/vim-ruby-refactoring
-	url = https://github.com/ecomba/vim-ruby-refactoring.git
 [submodule "bundle/snipmate-plus"]
 	path = bundle/snipmate-plus
 	url = https://github.com/acevery/snipmate-plus.git
 [submodule "bundle/vim-scala"]
 	path = bundle/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git
-[submodule "bundle/vim-monit"]
-	path = bundle/vim-monit
-	url = https://github.com/tmatilai/vim-monit.git
 [submodule "bundle/vim-elixir"]
 	path = bundle/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
@@ -25,21 +16,12 @@
 [submodule "bundle/vim-ruby"]
 	path = bundle/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
-[submodule "bundle/puppet"]
-	path = bundle/puppet
-	url = https://github.com/rodjek/vim-puppet.git
-[submodule "bundle/vim-actionscript"]
-	path = bundle/vim-actionscript
-	url = https://github.com/jeroenbourgois/vim-actionscript.git
 [submodule "bundle/ctrlp.vim"]
 	path = bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/Conque-Shell"]
-	path = bundle/Conque-Shell
-	url = https://github.com/vim-scripts/Conque-Shell.git
 [submodule "bundle/Align"]
 	path = bundle/Align
 	url = https://github.com/vim-scripts/Align.git
@@ -55,9 +37,6 @@
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = https://github.com/garbas/vim-snipmate.git
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
@@ -76,9 +55,6 @@
 [submodule "bundle/vim-graphql"]
 	path = bundle/vim-graphql
 	url = https://github.com/jparise/vim-graphql.git
-[submodule "bundle/splijoin"]
-	path = bundle/splijoin
-	url = https://github.com/AndrewRadev/splitjoin.vim.git
 [submodule "bundle/tsuquyomi"]
 	path = bundle/tsuquyomi
 	url = https://github.com/Quramy/tsuquyomi.git
