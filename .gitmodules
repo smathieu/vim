@@ -72,4 +72,7 @@
 	url = https://github.com/SirVer/ultisnips.git
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
+	url = https://github.com/smathieu/vim-snippets.git
+[submodule "bundle/ale"]
+	path = bundle/ale
+	url = https://github.com/dense-analysis/ale.git
