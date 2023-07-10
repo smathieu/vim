@@ -248,3 +248,20 @@ vmap <leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
 
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
+" ALE
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'ruby': ['rubocop'],
+\}
+highlight ALEWarning gui=undercurl guisp=#fac864
+"highlight ALEError gui=undercurl guisg=#ec5f67
+let g:ale_ruby_rubocop_executable = 'bundle'
+
+let g:UltiSnipsExpandTrigger="<cr>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+nmap <leader>s :ALEFix<cr>
