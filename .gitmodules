@@ -85,3 +85,9 @@
 [submodule "bundle/vim-svelte"]
 	path = bundle/vim-svelte
 	url = https://github.com/evanleck/vim-svelte.git
+[submodule "bundle/coc.nvim"]
+	path = bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule "bundle/coc-snippets"]
+	path = bundle/coc-snippets
+	url = https://github.com/neoclide/coc-snippets.git

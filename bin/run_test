@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #set -e
+set -x
 
 need_rails=0
 need_ruby=1
@@ -36,6 +37,9 @@ elif [[ $filename =~ "_spec.coffee" ]]; then
     else
       command='rails run ./script/run_jasmine.rb'
     fi
+elif [[ $filename =~ ".test.tsx" ]] || [[ $filename =~ ".test.ts" ]]; then
+    need_ruby=0
+    command='npm run test -- --watchAll=false'
 elif [[ $filename =~ ".feature" ]]; then
     command="bundle exec cucumber"
 elif [[ $filename =~ ".test.js" ]]; then

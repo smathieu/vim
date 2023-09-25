@@ -132,10 +132,11 @@ function! RunTestFile(...)
     endif
 
     " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\|_spec.coffee\|\.test\.js\)$') != -1
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\|_spec.coffee\|\.test\.js\|\.test\.tsx\|\.test\.ts\)$') != -1
     let in_gemfile = match(expand("%"), '\(Gemfile\)$') != -1 || match(expand("%"), '\(\.gemspec\)$') != -1
     let in_script = match(expand("%"), 'scripts\/') != -1
     if in_test_file
+      echo "in test file"
         call SetTestFile(command_suffix)
     elseif in_gemfile
         exec ":!run-command bundle install"
@@ -151,7 +152,15 @@ endfunction
 
 function! RunNearestTest()
     let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number)
+    let in_js = match(expand("%"), '\.test\.tsx$') != -1
+    if in_js
+      let line_text = getline('.')
+      let spec_line_number = matchstr(line_text, 'test(')
+      let test_name = substitute(line_text, 'it("\(.*\)".*', '\1', '')
+      call RunTestFile("--testNamePattern " . test_name)
+    else
+      call RunTestFile(":" . spec_line_number)
+    end
 endfunction
 
 function! SetTestFile(suffix)
@@ -174,6 +183,7 @@ function! RunTests(filename)
         if filereadable("script/test")
             exec ":!script/test " . a:filename
         elseif filereadable(expand("~/.vim/bin/run_test"))
+            echo ":!" . expand("~/.vim/bin/run_test") . " " . a:filename
             exec ":!" . expand("~/.vim/bin/run_test") . " " . a:filename
         elseif filereadable("Gemfile")
             exec ":!bundle exec ruby -Itest " . a:filename
@@ -249,10 +259,19 @@ vmap <leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " ALE
+let js_fixers = ['prettier', 'eslint']
 let g:ale_fixers = {
-\   'javascript': ['prettier'],
+\   'javascript': js_fixers,
+\   'javascript.jsx': js_fixers,
+\   'typescript': js_fixers,
+\   'typescriptreact': js_fixers,
+\   'css': ['prettier'],
+\   'json': ['prettier'],
 \   'ruby': ['rubocop'],
 \}
+
+let g:ale_fix_on_save = 1
+
 highlight ALEWarning gui=undercurl guisp=#fac864
 "highlight ALEError gui=undercurl guisg=#ec5f67
 let g:ale_ruby_rubocop_executable = 'bundle'
