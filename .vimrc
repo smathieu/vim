@@ -9,6 +9,7 @@ set sw=4
 set cindent
 set nowb
 set expandtab
+set modeline
 
 set smarttab
 set ai
